@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 平台部署指南</title>
+    <title>Claw类产品部署指南</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: Arial, 'KaiTi', '楷体', 'STKaiti', 'BiauKai', serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -98,7 +96,6 @@
         .note-blue { background: #e3f2fd; border: 1px solid #2196f3; color: #0d47a1; }
         .note-green { background: #e8f5e9; border: 1px solid #4caf50; color: #1b5e20; }
         
-        /* 对比表格样式 - 统一格式 */
         .comparison-container { overflow-x: auto; margin-bottom: 40px; }
         .comparison-table {
             width: 100%; border-collapse: collapse; background: white;
@@ -127,11 +124,9 @@
             background: #f5f5f5;
             min-width: 120px;
         }
-        /* 高亮样式 - 整行统一 */
         .highlight-row { background: #e3f2fd; font-weight: bold; color: #1565c0; }
         .free-row { background: #e8f5e9; font-weight: bold; color: #2e7d32; }
         
-        /* 选型向导 - 场景卡片 */
         .wizard-section { margin-top: 40px; }
         .wizard-section h3 { font-size: 1.8em; color: #333; margin-bottom: 25px; text-align: center; }
         .wizard-intro {
@@ -216,7 +211,6 @@
             font-weight: bold;
         }
         
-        /* 快速对比卡片 */
         .quick-compare { margin-top: 40px; }
         .quick-compare h3 { font-size: 1.8em; color: #333; margin-bottom: 25px; text-align: center; }
         .compare-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
@@ -289,49 +283,49 @@
         </header>
 
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showPage('products')">📦 产品详情</button>
-            <button class="nav-tab" onclick="showPage('comparison')">📊 产品对比</button>
+            <button class="nav-tab active" onclick="showPage('products', event)">📦 产品详情</button>
+            <button class="nav-tab" onclick="showPage('comparison', event)">📊 产品对比</button>
         </div>
 
         <!-- 产品详情页面 -->
         <div id="products" class="page-section active">
             <div class="products-grid">
-                <div class="product-card" onclick="showDetail('openclaw')">
+                <div class="product-card" onclick="showDetail('openclaw', event)">
                     <h3><span class="icon">🦞</span> OpenClaw</h3>
                     <p>开源自托管网关</p>
                     <span class="tag tag-hybrid">云端 + 本地</span>
                 </div>
-                <div class="product-card" onclick="showDetail('maxclaw')">
+                <div class="product-card" onclick="showDetail('maxclaw', event)">
                     <h3><span class="icon">⚡</span> MaxClaw</h3>
                     <p>MiniMax 云端托管</p>
                     <span class="tag tag-cloud">云端托管</span>
                 </div>
-                <div class="product-card" onclick="showDetail('kimiclaw')">
+                <div class="product-card" onclick="showDetail('kimiclaw', event)">
                     <h3><span class="icon">🌙</span> Kimi Claw</h3>
                     <p>Moonshot 浏览器集成</p>
                     <span class="tag tag-cloud">云端</span>
                 </div>
-                <div class="product-card" onclick="showDetail('picoclaw')">
+                <div class="product-card" onclick="showDetail('picoclaw', event)">
                     <h3><span class="icon">🦐</span> PicoClaw</h3>
                     <p>超轻量级 AI 助手</p>
                     <span class="tag tag-edge">边缘/本地</span>
                 </div>
-                <div class="product-card" onclick="showDetail('autoclaw')">
+                <div class="product-card" onclick="showDetail('autoclaw', event)">
                     <h3><span class="icon">🔄</span> AutoClaw</h3>
                     <p>智谱 AI 飞书集成</p>
                     <span class="tag tag-cloud">云端</span>
                 </div>
-                <div class="product-card" onclick="showDetail('arkclaw')">
+                <div class="product-card" onclick="showDetail('arkclaw', event)">
                     <h3><span class="icon">🚀</span> ArkClaw</h3>
                     <p>火山方舟 AI 助手</p>
                     <span class="tag tag-cloud">云端</span>
                 </div>
-                <div class="product-card" onclick="showDetail('copaw')">
+                <div class="product-card" onclick="showDetail('copaw', event)">
                     <h3><span class="icon">🐾</span> CoPaw</h3>
                     <p>AgentScope 协作助手</p>
                     <span class="tag tag-hybrid">云端 + 本地</span>
                 </div>
-                <div class="product-card" onclick="showDetail('workbuddy')">
+                <div class="product-card" onclick="showDetail('workbuddy', event)">
                     <h3><span class="icon">💼</span> WorkBuddy</h3>
                     <p>腾讯云 AI 办公助手</p>
                     <span class="tag tag-hybrid">云端 + 本地</span>
@@ -349,7 +343,7 @@
                         <h3>📦 安装流程</h3>
                         <ul class="step-list">
                             <li><div class="step-title"><span class="step-num">1</span>安装 OpenClaw</div>
-                                <div class="step-desc">Windows: <div class="code">iwr -useb https://openclaw.ai/install.ps1 | iex</div>macOS/Linux: <div class="code">curl -fsSL https://openclaw.ai/install.sh | bash</div></div></li>
+                                <div class="step-desc">Windows: <div class="code">iwr -useb https://openclaw.ai/install.ps1 | iex</div><div class="code">npm install -g openclaw@latest</div>macOS/Linux: <div class="code">curl -fsSL https://openclaw.ai/install.sh | bash</div></div></li>
                             <li><div class="step-title"><span class="step-num">2</span>运行引导配置</div>
                                 <div class="step-desc"><div class="code">openclaw onboard --install-daemon</div>配置认证、网关设置和可选频道</div></li>
                             <li><div class="step-title"><span class="step-num">3</span>检查网关状态</div>
@@ -359,11 +353,11 @@
                             <li><div class="step-title"><span class="step-num">5</span>配置频道（可选）</div>
                                 <div class="step-desc"><div class="code">openclaw channels login</div>配对 WhatsApp/Telegram 等</div></li>
                         </ul>
-                        <div class="note note-blue"><strong>☁️ 云端部署</strong>1. 购买 ECS 服务器（2 核 4G+）<br>2. 安装 Node.js 24 或 22 LTS<br>3. 执行安装命令<br>4. 配置安全组开放 18789 端口<br>5. 使用 Tailscale 远程访问</div>
-                        <div class="note note-green" style="margin-top: 10px;"><strong>💻 本地部署</strong>直接在个人电脑运行，适合开发和测试使用</div>
+                        <div class="note note-blue"><strong>☁️ 云端部署</strong>腾讯云/阿里云均可部署，个人选择2核2G配置即可</div>
+                        <div class="note note-green" style="margin-top: 10px;"><strong>💻 本地部署</strong>Windows需要提前安装node.js、Git；直接在个人电脑运行，适合开发和测试使用</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（8 个平台）</h3>
+                        <h3>📱 渠道配置（7 个常用平台）</h3>
                         <div class="channel-section"><h4>国际</h4>
                             <div class="channel-grid">
                                 <div class="channel-card"><h5>💬 WhatsApp</h5><div class="path"><strong>路径：</strong>1. openclaw channels login<br>2. 扫码配对</div><a href="https://docs.openclaw.ai/channels/whatsapp" target="_blank" class="source-link">📖 文档</a></div>
@@ -374,10 +368,9 @@
                         </div>
                         <div class="channel-section"><h4>国内</h4>
                             <div class="channel-grid">
-                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>1. 飞书开放平台创建应用<br>2. 配置事件订阅</div><a href="https://docs.openclaw.ai/channels/feishu" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>1. 企业微信管理后台<br>2. 配置回调 URL</div><a href="https://docs.openclaw.ai/channels/wecom" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>1. 钉钉开发者后台<br>2. 配置事件订阅</div><a href="https://docs.openclaw.ai/channels/dingtalk" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🐧 QQ</h5><div class="path"><strong>路径：</strong>1. QQ 开放平台创建<br>2. 配置消息回调</div><a href="https://docs.openclaw.ai/channels/qq" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>1. 飞书开放平台创建应用<br>2. 配置事件订阅</div><a href="https://docs.openclaw.ai/zh-CN/channels/feishu" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>1. 企业微信管理后台<br>2. 配置回调 URL</div><a href="https://open.work.weixin.qq.com/help2/pc/cat?doc_id=21657" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>1. 钉钉开发者后台<br>2. 配置事件订阅</div><a href="https://open.dingtalk.com/document/dingstart/dingtalk-ai-employees-manual-configuration" target="_blank" class="source-link">📖 文档</a></div>
                             </div>
                         </div>
                     </div>
@@ -402,26 +395,20 @@
                         <div class="note note-green"><strong>✨ 核心优势</strong>• 10 秒部署，无需服务器<br>• 成本为 Claude 3.5 的 1/7-1/20<br>• 200K+ tokens 长上下文<br>• MiniMax M2.5 模型（229B 参数）</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（6 个平台）</h3>
-                        <div class="channel-section"><h4>国际</h4>
-                            <div class="channel-grid">
-                                <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>平台内一键绑定</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>📘 Discord</h5><div class="path"><strong>路径：</strong>平台内授权</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>💬 Slack</h5><div class="path"><strong>路径：</strong>Slack App 目录</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
-                            </div>
-                        </div>
+                        <h3>📱 渠道配置（4 个常用平台）</h3>
                         <div class="channel-section"><h4>国内</h4>
                             <div class="channel-grid">
                                 <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>1. 飞书开放平台<br>2. 配置回调 URL</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>📧 微信</h5><div class="path"><strong>路径：</strong>1. 配置weixin-connect Skill<br>2. 扫码连接</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
                                 <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>1. 企业微信管理后台<br>2. 配置可信域名</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>1. 钉钉开发者后台<br>2. 配置事件订阅</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://open.dingtalk.com/document/dingstart/dingtalk-ai-employees-manual-configuration" target="_blank" class="source-link">📖 文档</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Kimi Claw 详情 -->
+            <!-- Kimi Claw 详情 (已修复：补齐"国际" channel-section 的闭合标签) -->
             <div id="kimiclaw" class="detail-panel">
                 <div class="detail-header">
                     <h2>🌙 Kimi Claw</h2>
@@ -440,11 +427,16 @@
                         <div class="note note-blue"><strong>✨ 核心特点</strong>• 浏览器内一键部署<br>• 5000+ ClawHub 社区技能<br>• 40GB 云存储用于长期记忆<br>• 支持多渠道操作</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（3 个平台）</h3>
-                        <div class="channel-grid">
-                            <div class="channel-card"><h5>🌐 浏览器</h5><div class="path"><strong>路径：</strong>Kimi 浏览器内置</div><a href="https://kimi-claw.com/" target="_blank" class="source-link">📖 文档</a></div>
-                            <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>配置频道设置</div><a href="https://kimi-claw.com/" target="_blank" class="source-link">📖 文档</a></div>
-                            <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>飞书应用市场</div><a href="https://kimi-claw.com/" target="_blank" class="source-link">📖 文档</a></div>
+                        <h3>📱 渠道配置（2 个常用平台）</h3>
+                        <div class="channel-section"><h4>国际</h4>
+                            <div class="channel-grid">
+                                <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://docs.openclaw.ai/channels/telegram" target="_blank" class="source-link">📖 文档</a></div>
+                            </div>
+                        </div><!-- ✅ 修复：补齐"国际" channel-section 的 </div> -->
+                        <div class="channel-section"><h4>国内</h4>
+                            <div class="channel-grid">
+                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>1. 飞书开放平台<br>2. 配置回调 URL</div><a href="https://vrfi1sk8a0.feishu.cn/wiki/LIwrwZp2aipuwgkEzLycsQF5nEc" target="_blank" class="source-link">📖 文档</a></div>
+                            </div>
                         </div>
                         <div class="note note-green"><strong>ℹ️ 说明</strong>Kimi Claw 是 Moonshot AI 基于 OpenClaw 构建的浏览器原生 AI 助手</div>
                     </div>
@@ -467,16 +459,22 @@
                             <li><div class="step-title"><span class="step-num">4</span>初始化配置</div><div class="step-desc"><div class="code">./picoclaw onboard</div></div></li>
                             <li><div class="step-title"><span class="step-num">5</span>启动网关</div><div class="step-desc"><div class="code">./picoclaw gateway</div></div></li>
                         </ul>
-                        <div class="note note-blue"><strong>✨ 边缘部署</strong>• <10MB 内存占用<br>• <1 秒启动时间<br>• $10 硬件即可运行<br>• 支持 RISC-V/ARM64/x86</div>
+                        <div class="note note-blue"><strong>✨ 边缘部署</strong>• &lt;10MB 内存占用<br>• &lt;1 秒启动时间<br>• $10 硬件即可运行<br>• 支持 RISC-V/ARM64/x86</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（4 个平台）</h3>
-                        <div class="channel-section"><h4>推荐渠道</h4>
+                        <h3>📱 渠道配置（6 个常用平台）</h3>
+                        <div class="channel-section"><h4>国际</h4>
                             <div class="channel-grid">
-                                <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>配置文件添加 Token</div><a href="https://github.com/sipeed/picoclaw" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>📘 Discord</h5><div class="path"><strong>路径：</strong>配置文件添加 Token</div><a href="https://github.com/sipeed/picoclaw" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🐧 QQ</h5><div class="path"><strong>路径：</strong>配置回调 URL</div><a href="https://github.com/sipeed/picoclaw" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>配置事件订阅</div><a href="https://github.com/sipeed/picoclaw" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://github.com/sipeed/picoclaw/blob/main/docs/chat-apps.md" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>📘 Discord</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://github.com/sipeed/picoclaw/blob/main/docs/chat-apps.md" target="_blank" class="source-link">📖 文档</a></div>
+                            </div>
+                        </div>
+                        <div class="channel-section"><h4>国内</h4>
+                            <div class="channel-grid">
+                                <div class="channel-card"><h5>🐧 QQ</h5><div class="path"><strong>路径：</strong>1. QQ开放平台创建机器人<br>2. 填写config.json</div><a href="https://github.com/sipeed/picoclaw/blob/main/docs/chat-apps.md" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://github.com/sipeed/picoclaw/blob/main/docs/chat-apps.md" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://github.com/sipeed/picoclaw/blob/main/docs/chat-apps.md" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://github.com/sipeed/picoclaw/blob/main/docs/chat-apps.md" target="_blank" class="source-link">📖 文档</a></div>
                             </div>
                         </div>
                         <div class="note note-green"><strong>🔧 推荐硬件</strong>• LicheeRV Nano ($9.9)<br>• NanoKVM ($30-100)</div>
@@ -502,12 +500,10 @@
                         <div class="note note-blue"><strong>✨ 核心特点</strong>• 一键激活 AI 智能体分身<br>• 自主调用专业工具<br>• 本地执行，飞书同步</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（2 个平台）</h3>
-                        <div class="channel-section"><h4>主要渠道</h4>
-                            <div class="channel-grid">
-                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>一键激活</div><a href="https://autoglm.zhipuai.cn/autoclaw/" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>联系商务定制</div><a href="https://autoglm.zhipuai.cn" target="_blank" class="source-link">📖 文档</a></div>
-                            </div>
+                        <h3>📱 渠道配置（2 个常用平台）</h3>
+                        <div class="channel-grid">
+                            <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://autoglm.zhipuai.cn/autoclaw/" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>参考OpenClaw</div><a href="https://autoglm.zhipuai.cn" target="_blank" class="source-link">📖 文档</a></div>
                         </div>
                         <div class="note note-green"><strong>ℹ️ 说明</strong>AutoClaw 是智谱 AI 推出的飞书集成 AI 助手</div>
                     </div>
@@ -533,13 +529,11 @@
                         <div class="note note-blue"><strong>✨ 核心特点</strong>• 火山方舟大模型平台<br>• 企业级 AI 服务<br>• 多模型支持</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（3 个平台）</h3>
-                        <div class="channel-section"><h4>主要渠道</h4>
-                            <div class="channel-grid">
-                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>火山方舟集成</div><a href="https://www.volcengine.com/docs" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>自建应用配置</div><a href="https://www.volcengine.com/docs" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>创建企业内部应用</div><a href="https://www.volcengine.com/docs" target="_blank" class="source-link">📖 文档</a></div>
-                            </div>
+                        <h3>📱 渠道配置（3 个常用平台）</h3>
+                        <div class="channel-grid">
+                            <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>火山方舟集成</div><a href="https://www.volcengine.com/docs/6396/2249541?lang=zh" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>自建应用配置</div><a href="https://www.volcengine.com/docs/6396/2249541?lang=zh" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>创建企业内部应用</div><a href="https://www.volcengine.com/docs/6396/2249541?lang=zh" target="_blank" class="source-link">📖 文档</a></div>
                         </div>
                         <div class="note note-green"><strong>ℹ️ 说明</strong>ArkClaw 是火山引擎火山方舟平台的 AI 助手服务</div>
                     </div>
@@ -557,19 +551,26 @@
                         <h3>📦 安装流程</h3>
                         <ul class="step-list">
                             <li><div class="step-title"><span class="step-num">1</span>访问官网</div><div class="step-desc">导航至 copaw.agentscope.io</div></li>
-                            <li><div class="step-title"><span class="step-num">2</span>查看文档</div><div class="step-desc">访问 docs 页面查看指南</div></li>
-                            <li><div class="step-title"><span class="step-num">3</span>安装 AgentScope</div><div class="step-desc"><div class="code">pip install agentscope</div></div></li>
-                            <li><div class="step-title"><span class="step-num">4</span>配置启动</div><div class="step-desc">配置文件后启动服务</div></li>
+                            <li><div class="step-title"><span class="step-num">2</span>5种安装方式</div><div class="step-desc">pip/脚本/桌面应用等</div></li>
+                            <li><div class="step-title"><span class="step-num">3</span>配置启动</div><div class="step-desc">配置文件后启动服务</div></li>
                         </ul>
                         <div class="note note-blue"><strong>ℹ️ 说明</strong>CoPaw 是基于 AgentScope 的 AI 协作助手<br>支持云端 + 本地混合部署</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（4 个平台）</h3>
-                        <div class="channel-grid">
-                            <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>配置事件订阅</div><a href="https://copaw.agentscope.io/docs" target="_blank" class="source-link">📖 文档</a></div>
-                            <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>创建自建应用</div><a href="https://copaw.agentscope.io/docs" target="_blank" class="source-link">📖 文档</a></div>
-                            <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>创建企业内部应用</div><a href="https://copaw.agentscope.io/docs" target="_blank" class="source-link">📖 文档</a></div>
-                            <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>参考 AgentScope 文档</div><a href="https://copaw.agentscope.io/docs" target="_blank" class="source-link">📖 文档</a></div>
+                        <h3>📱 渠道配置（6 个常用平台）</h3>
+                        <div class="channel-section"><h4>国际</h4>
+                            <div class="channel-grid">
+                                <div class="channel-card"><h5>✈️ Telegram</h5><div class="path"><strong>路径：</strong>1. 获取 Telegram 机器人凭证<br>2. 绑定 Bot </div><a href="https://copaw.agentscope.io/docs/channels#Telegram" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>📘 Discord</h5><div class="path"><strong>路径：</strong>1.  Discord 开发者门户获取 Bot Token<br>2.绑定 Bot </div><a href="https://copaw.agentscope.io/docs/channels/#Discord" target="_blank" class="source-link">📖 文档</a></div>
+                            </div>
+                        </div>
+                        <div class="channel-section"><h4>国内</h4>
+                            <div class="channel-grid">
+                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>1. 创建飞书应用并获取凭证 <br>2. 填写 config.json/在Console前端配置 </div><a href="https://copaw.agentscope.io/docs/channels#%E9%A3%9E%E4%B9%A6" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>类似飞书，在企微+Console前端/config.json 中设置 </div><a href="https://copaw.agentscope.io/docs/channels#%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>类似飞书</div><a href="https://copaw.agentscope.io/docs/channels#%E9%92%89%E9%92%89%E6%8E%A8%E8%8D%90" target="_blank" class="source-link">📖 文档</a></div>
+                                <div class="channel-card"><h5>🔔 QQ</h5><div class="path"><strong>路径：</strong>类似飞书</div><a href="https://copaw.agentscope.io/docs/channels/#QQ" target="_blank" class="source-link">📖 文档</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -587,22 +588,20 @@
                         <ul class="step-list">
                             <li><div class="step-title"><span class="step-num">1</span>访问官网</div><div class="step-desc">导航至 www.codebuddy.cn/work/</div></li>
                             <li><div class="step-title"><span class="step-num">2</span>下载客户端</div><div class="step-desc">下载 WorkBuddy 桌面客户端</div></li>
-                            <li><div class="step-title"><span class="step-num">3</span>登录账号</div><div class="step-desc">使用腾讯云账号登录</div></li>
+                            <li><div class="step-title"><span class="step-num">3</span>登录账号</div><div class="step-desc">微信账号登录</div></li>
                             <li><div class="step-title"><span class="step-num">4</span>配置 Claw</div><div class="step-desc">点击 Claw 设置，选择平台</div></li>
                             <li><div class="step-title"><span class="step-num">5</span>开始使用</div><div class="step-desc">手机发消息，电脑执行</div></li>
                         </ul>
-                        <div class="note note-green"><strong>✨ 核心功能</strong>• Claw 远程控制功能<br>• 手机发消息，电脑执行任务<br>• 支持微信/企微/QQ/钉钉/飞书</div>
+                        <div class="note note-green"><strong>✨ 核心功能</strong>• 行业专家集成</div>
                     </div>
                     <div class="module">
-                        <h3>📱 渠道配置（5 个平台）</h3>
-                        <div class="channel-section"><h4>Claw 远程控制</h4>
-                            <div class="channel-grid">
-                                <div class="channel-card"><h5>💬 微信</h5><div class="path"><strong>路径：</strong>扫码绑定客服号</div><a href="https://www.codebuddy.cn/docs/workbuddy/Claw" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>配置回调 URL</div><a href="https://www.codebuddy.cn/docs/workbuddy/Wecom-Guide" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🐧 QQ</h5><div class="path"><strong>路径：</strong>配置回调</div><a href="https://www.codebuddy.cn/docs/workbuddy/QQ-Guide" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>配置事件订阅</div><a href="https://www.codebuddy.cn/docs/workbuddy/Feishu-Guide" target="_blank" class="source-link">📖 文档</a></div>
-                                <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>配置接入</div><a href="https://www.codebuddy.cn/docs/workbuddy/Dingtalk-Guide" target="_blank" class="source-link">📖 文档</a></div>
-                            </div>
+                        <h3>📱 渠道配置（5 个常用平台）</h3>
+                        <div class="channel-grid">
+                            <div class="channel-card"><h5>💬 微信</h5><div class="path"><strong>路径：</strong>扫码绑定客服号</div><a href="https://www.codebuddy.cn/docs/workbuddy/Claw" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>💼 企业微信</h5><div class="path"><strong>路径：</strong>参考CoPaw/文档</div><a href="https://www.codebuddy.cn/docs/workbuddy/Wecom-Guide" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>🐧 QQ</h5><div class="path"><strong>路径：</strong>参考CoPaw/文档</div><a href="https://www.codebuddy.cn/docs/workbuddy/QQ-Guide" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>参考文档</div><a href="https://www.codebuddy.cn/docs/workbuddy/Feishu-Guide" target="_blank" class="source-link">📖 文档</a></div>
+                            <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>参考CoPaw/文档</div><a href="https://www.codebuddy.cn/docs/workbuddy/Dingtalk-Guide" target="_blank" class="source-link">📖 文档</a></div>
                         </div>
                         <div class="note note-blue"><strong>⚠️ 注意</strong>使用 Claw 时，电脑需要保持开机并运行 WorkBuddy</div>
                     </div>
@@ -617,7 +616,6 @@
                     <h2>📊 产品对比总览</h2>
                 </div>
                 
-                <!-- 对比表格 - 统一格式 -->
                 <div class="comparison-container">
                     <table class="comparison-table">
                         <thead>
@@ -634,57 +632,50 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>推出时间</td><td>1 月</td><td>2 月 25 日</td><td>2 月 15 日</td><td>2 月 10 日</td><td>3 月 10 日</td><td>3 月 9 日</td><td>2 月 28 日</td><td>3 月 9 日</td></tr>
-                            <tr><td>公司</td><td>独立开发者</td><td>MiniMax</td><td>Kimi (Moonshot)</td><td>Sipeed</td><td>智谱 AI</td><td>字节 (火山)</td><td>阿里</td><td>腾讯</td></tr>
-                            <tr><td>核心定位</td><td>开源框架</td><td>云端 Agent</td><td>云端托管</td><td>边缘部署</td><td>一键安装</td><td>云版 OpenClaw</td><td>办公协同</td><td>企业级 AI</td></tr>
-                            <tr><td>部署方式</td><td>本地/云端</td><td>云端</td><td>云端</td><td>本地/边缘</td><td>本地</td><td>云端</td><td>云端/本地</td><td>本地</td></tr>
-                            <tr class="highlight-row"><td>默认模型</td><td>多种模型</td><td>M2.5</td><td>K2.5 Thinking</td><td>多种模型</td><td>Pony-Alpha-2</td><td>Doubao-Seed-2.0 Pro</td><td>多种模型</td><td>多种模型</td></tr>
-                            <tr><td>渠道数量</td><td>8 个</td><td>6 个</td><td>3 个</td><td>4 个</td><td>2 个</td><td>3 个</td><td>4 个</td><td>5 个</td></tr>
-                            <tr><td>独家能力</td><td>高度可定制</td><td>极致性价比</td><td>40GB 云存储</td><td>&lt;10MB 内存</td><td>国内首个一键</td><td>飞书深度适配</td><td>模块化设计</td><td>企业级安全</td></tr>
-                            <tr class="free-row"><td>付费定价</td><td>开源免费</td><td>¥29/月起</td><td>¥49/月起</td><td>开源免费</td><td>¥49/月起</td><td>¥40/月起</td><td>开源免费</td><td>赠 5000 Credits</td></tr>
+                            <tr><td>公司</td><td>独立开发者</td><td>MiniMax</td><td>月之暗面</td><td>Sipeed</td><td>智谱</td><td>字节</td><td>阿里</td><td>腾讯</td></tr>
+                            <tr><td>核心定位</td><td>开源框架，适合开发者</td><td>极致性价比云端Agent</td><td>超轻量</td><td>边缘部署</td><td>一键安装</td><td>云端 OpenClaw</td><td>办公协同</td><td>企业级</td></tr>
+                            <tr><td>部署方式</td><td>本地/云端</td><td>云端</td><td>云端</td><td>边缘/云端</td><td>本地</td><td>云端</td><td>云端/本地</td><td>本地</td></tr>
+                            <tr class="highlight-row"><td>默认模型</td><td>多种模型</td><td>M2.5</td><td>K2.5 Thinking</td><td>多种模型</td><td>GLM-5-Turbo</td><td>Doubao-Seed-2.0 Pro</td><td>多种模型</td><td>多种模型</td></tr>
+                            <tr><td>接入渠道</td><td>Telegrame/WhatsApp/Discord/Slack/飞书等</td><td>飞书/微信（仅苹果）/企微/钉钉等</td><td>Telegram/飞书等</td><td>参考OpenClaw</td><td>飞书/企微等</td><td>飞书/企微/钉钉等</td><td>Telegram/Discord/飞书/企微/QQ/钉钉等</td><td>微信/飞书/企微/QQ/钉钉等</td></tr>
+                            <tr><td>独家能力</td><td>10,000+垂直专家智能体</td><td>40GB云存储；5,000+技能</td><td>低内存占用</td><td>&lt;10MB 内存</td><td>浏览器自动化；50+预置Skills</td><td>飞书深度适配，端云文件互传</td><td>模块化设计</td><td>企业级安全，多Agent并行</td></tr>
+                            <tr class="free-row"><td>付费定价</td><td>开源免费</td><td>¥49/月起</td><td>¥199/月起</td><td>免费</td><td>周包¥29起</td><td>¥40/月起</td><td>开源免费</td><td>免费，赠 5000 Credits</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- 选型向导 - 按场景分类 -->
                 <div class="wizard-section">
                     <h3>🎯 按使用场景选择</h3>
                     <p class="wizard-intro">根据你的使用场景，快速找到最适合的产品</p>
                     <div class="scenario-cards">
                         <div class="scenario-card">
                             <h4>🔧 自动化开发/技术定制</h4>
-                            <p class="description">需要高度定制化，喜欢折腾技术，有服务器或本地部署经验</p>
+                            <p class="description">需要高度定制化，喜欢折腾技术，有本地部署经验</p>
                             <div class="recommendation">
                                 <strong>推荐产品</strong>
                                 <div class="products">
                                     <span class="product-tag"><span class="icon">🦞</span> OpenClaw</span>
-                                    <span class="product-tag"><span class="icon">🦐</span> PicoClaw</span>
                                 </div>
                                 <ul class="reasons">
                                     <li>开源免费，可高度 DIY 和定制</li>
-                                    <li>社区活跃，技能生态丰富</li>
-                                    <li>支持多架构部署（x86/ARM/RISC-V）</li>
+                                    <li>社区活跃，技能生态丰富，可接入渠道最丰富</li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="scenario-card">
-                            <h4>☁️ 云端托管/免运维</h4>
-                            <p class="description">不想管理服务器，希望开箱即用，快速部署，按需付费</p>
+                            <h4>☁️ 性价比云托管</h4>
+                            <p class="description">不想管理服务器，希望开箱即用，快速部署，追求性价比</p>
                             <div class="recommendation">
                                 <strong>推荐产品</strong>
                                 <div class="products">
                                     <span class="product-tag"><span class="icon">⚡</span> MaxClaw</span>
-                                    <span class="product-tag"><span class="icon">🌙</span> Kimi Claw</span>
                                 </div>
                                 <ul class="reasons">
-                                    <li>10 秒部署，无需服务器运维</li>
-                                    <li>成本仅为 Claude 3.5 的 1/7-1/20</li>
-                                    <li>云端托管，自动扩展</li>
+                                    <li>10s云端部署</li>
+                                    <li>49元/月即可使用</li>
+                                     <li>无需额外设备即可做到7×24小时响应</li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="scenario-card">
                             <h4>📧 飞书工作流集成</h4>
                             <p class="description">日常工作主要在飞书，希望 AI 能深度集成到飞书工作流</p>
@@ -692,16 +683,12 @@
                                 <strong>推荐产品</strong>
                                 <div class="products">
                                     <span class="product-tag"><span class="icon">🔄</span> AutoClaw</span>
-                                    <span class="product-tag"><span class="icon">🚀</span> ArkClaw</span>
                                 </div>
                                 <ul class="reasons">
-                                    <li>飞书原生集成</li>
-                                    <li>一键激活，无需配置</li>
-                                    <li>深度适配飞书日程/纪要</li>
+                                    <li>深度适配飞书日程/纪要等功能</li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="scenario-card">
                             <h4>🏢 企业办公/数据安全</h4>
                             <p class="description">企业团队使用，需要数据私有化、安全审计、权限管理</p>
@@ -712,16 +699,14 @@
                                     <span class="product-tag"><span class="icon">🐾</span> CoPaw</span>
                                 </div>
                                 <ul class="reasons">
-                                    <li>数据私有化部署，数据不参与训练</li>
+                                    <li>数据可本地私有化部署</li>
                                     <li>企业级安全审计和权限管理</li>
-                                    <li>多 Agent 并行协作</li>
-                                    <li>支持微信/企微/钉钉/飞书</li>
+                                    <li>支持多 Agent 并行协作</li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="scenario-card">
-                            <h4>🏠 边缘计算/IoT 嵌入</h4>
+                            <h4>🏠 边缘计算</h4>
                             <p class="description">需要在嵌入式设备、树莓派等低功耗设备上运行 AI</p>
                             <div class="recommendation">
                                 <strong>推荐产品</strong>
@@ -731,30 +716,27 @@
                                 <ul class="reasons">
                                     <li>&lt;10MB 内存占用</li>
                                     <li>$10 硬件即可运行</li>
-                                    <li>支持 RISC-V/ARM64/x86</li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="scenario-card">
                             <h4>📚 长期记忆/知识管理</h4>
                             <p class="description">需要 AI 记住大量上下文，进行长期项目协作和知识管理</p>
                             <div class="recommendation">
                                 <strong>推荐产品</strong>
                                 <div class="products">
-                                    <span class="product-tag"><span class="icon">🌙</span> Kimi Claw</span>
+                                    <span class="product-tag"><span class="icon">🌙</span> KimiClaw</span>
                                 </div>
                                 <ul class="reasons">
                                     <li>40GB 云存储用于长期记忆</li>
                                     <li>5000+ ClawHub 社区技能</li>
-                                    <li>24/7 全天候主动执行</li>
+                                    <li>无需额外设备即可做到7×24小时响应</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- 快速对比卡片 - 8 个产品全部展示 -->
+<!-- 
                 <div class="quick-compare">
                     <h3>⚡ 8 款产品快速对比</h3>
                     <div class="compare-cards">
@@ -841,21 +823,39 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
 
         <footer>
-            <p>📊 最后更新：2026 年 3 月 17 日 | 数据来源：各产品官网及公开文档</p>
+            <p>📊 最后更新：2026 年 3 月 22 日 | 数据来源：各产品官网及公开文档</p>
         </footer>
     </div>
 
     <script>
-        function showPage(pageId) {
+        function showPage(pageId, event) {
             document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            event.currentTarget.classList.add('active');
+
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.querySelectorAll('.detail-panel').forEach(panel => panel.classList.remove('active'));
+            }
+
+            const targetSection = document.getElementById(pageId);
+            targetSection.classList.add('active');
+
+            if (pageId === 'comparison') {
+                const comparisonPanel = targetSection.querySelector('.detail-panel');
+                if (comparisonPanel) {
+                    comparisonPanel.classList.add('active');
+                }
+            }
+
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
         }
-        function showDetail(productId) {
+        function showDetail(productId, event) {
             document.querySelectorAll('.detail-panel').forEach(panel => panel.classList.remove('active'));
             document.querySelectorAll('.product-card').forEach(card => card.classList.remove('active'));
             const selectedPanel = document.getElementById(productId);
@@ -863,8 +863,11 @@
                 selectedPanel.classList.add('active');
                 selectedPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            event.currentTarget.classList.add('active');
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
         }
     </script>
-</body>
-</html>
+
+
+</body></html>
