@@ -352,7 +352,7 @@
                 <div class="product-card" onclick="showDetail('workbuddy', event)">
                     <h3><span class="icon">💼</span> WorkBuddy</h3>
                     <p>腾讯</p>
-                    <span class="tag tag-hybrid">本地</span>
+                    <span class="tag tag-hybrid">云端 + 本地</span>
                 </div>
             </div>
 
@@ -367,13 +367,13 @@
                         <h3>📦 安装流程</h3>
                         <ul class="step-list">
                             <li><div class="step-title"><span class="step-num">1</span>安装 OpenClaw</div>
-                                <div class="step-desc">Windows: <div class="code">iwr -useb https://openclaw.ai/install.ps1 | iex</div><div class="code">npm install -g openclaw@latest</div>macOS/Linux: <div class="code">curl -fsSL https://openclaw.ai/install.sh | bash</div></div></li>
+                                <div class="step-desc">Windows: <div class="code">iwr -useb https://openclaw.ai/install.ps1 | iex</div>或者<div class="code">npm install -g openclaw@latest</div>macOS/Linux: <div class="code">curl -fsSL https://openclaw.ai/install.sh | bash</div></div></li>
                             <li><div class="step-title"><span class="step-num">2</span>运行引导配置</div>
                                 <div class="step-desc"><div class="code">openclaw onboard --install-daemon</div>配置认证、网关设置和可选频道</div></li>
                             <li><div class="step-title"><span class="step-num">3</span>检查网关状态</div>
                                 <div class="step-desc"><div class="code">openclaw gateway status</div>确认服务正在运行</div></li>
                             <li><div class="step-title"><span class="step-num">4</span>打开控制台</div>
-                                <div class="step-desc"><div class="code">openclaw dashboard</div>访问 http://127.0.0.1:18789/</div></li>
+                                <div class="step-desc"><div class="code">openclaw dashboard</div></div></li>
                             <li><div class="step-title"><span class="step-num">5</span>配置频道（可选）</div>
                                 <div class="step-desc"><div class="code">openclaw channels login</div>配对 WhatsApp/Telegram 等</div></li>
                         </ul>
@@ -626,7 +626,7 @@
                             <div class="channel-card"><h5>📧 飞书</h5><div class="path"><strong>路径：</strong>参考文档</div><a href="https://www.codebuddy.cn/docs/workbuddy/Feishu-Guide" target="_blank" class="source-link">📖 文档</a></div>
                             <div class="channel-card"><h5>🔔 钉钉</h5><div class="path"><strong>路径：</strong>参考CoPaw/文档</div><a href="https://www.codebuddy.cn/docs/workbuddy/Dingtalk-Guide" target="_blank" class="source-link">📖 文档</a></div>
                         </div>
-                        <div class="note note-blue"><strong>⚠️ 注意</strong>使用 Claw 时，电脑需要保持开机并运行 WorkBuddy</div>
+                       
                     </div>
                 </div>
             </div>
@@ -646,7 +646,7 @@
                                 <th>对比维度</th>
                                 <th>OpenClaw</th>
                                 <th>MaxClaw</th>
-                                <th>Kimi Claw</th>
+                                <th>KimiClaw</th>
                                 <th>PicoClaw</th>
                                 <th>AutoClaw</th>
                                 <th>ArkClaw</th>
@@ -657,11 +657,11 @@
                         <tbody>
                             <tr><td>公司</td><td>独立开发者</td><td>MiniMax</td><td>月之暗面</td><td>Sipeed</td><td>智谱</td><td>字节</td><td>阿里</td><td>腾讯</td></tr>
                             <tr><td>核心定位</td><td>开源框架，适合开发者</td><td>极致性价比云端Agent</td><td>更强记忆能力的云端Agent</td><td>边缘部署</td><td>一键安装</td><td>云端 OpenClaw</td><td>办公协同</td><td>企业级</td></tr>
-                            <tr><td>部署方式</td><td>本地/云端</td><td>云端</td><td>云端</td><td>边缘/云端</td><td>本地</td><td>云端</td><td>云端/本地</td><td>本地</td></tr>
+                            <tr><td>部署方式</td><td>本地/云端</td><td>云端</td><td>云端</td><td>边缘/云端</td><td>本地</td><td>云端</td><td>本地/云端</td><td>本地/云端</td></tr>
                             <tr class="highlight-row"><td>默认模型</td><td>多种模型</td><td>M2.5</td><td>K2.5 Thinking</td><td>多种模型</td><td>GLM-5-Turbo</td><td>Doubao-Seed-2.0 Pro</td><td>多种模型</td><td>多种模型</td></tr>
                             <tr><td>接入渠道</td><td>Telegrame/WhatsApp/Discord/Slack/飞书等</td><td>飞书/微信（仅苹果）/企微/钉钉等</td><td>Telegram/飞书等</td><td>参考OpenClaw</td><td>飞书/企微等</td><td>飞书/企微/钉钉等</td><td>Telegram/Discord/飞书/企微/QQ/钉钉等</td><td>微信/飞书/企微/QQ/钉钉等</td></tr>
-                            <tr><td>独家能力</td><td>10,000+垂直专家智能体</td><td>40GB云存储；5,000+技能</td><td>低内存占用</td><td>&lt;10MB 内存</td><td>浏览器自动化；50+预置Skills</td><td>飞书深度适配，端云文件互传</td><td>模块化设计</td><td>企业级安全，多Agent并行</td></tr>
-                            <tr class="free-row"><td>付费定价</td><td>开源免费</td><td>¥49/月起</td><td>¥199/月起</td><td>免费</td><td>周包¥29起</td><td>¥40/月起</td><td>开源免费</td><td>免费，赠 5000 Credits</td></tr>
+                            <tr><td>独家能力</td><td>可高度DIY</td><td>10,000+垂直专家智能体</td><td>40GB云存储；5,000+技能</td><td>低内存占用</td><td>浏览器自动化；50+预置Skills</td><td>飞书深度适配，端云文件互传</td><td>配置灵活，端云协同，多Agent并行</td><td>企业级安全，多Agent并行</td></tr>
+                            <tr class="free-row"><td>付费定价</td><td>开源免费</td><td>¥49/月起</td><td>¥159/月起</td><td>免费</td><td>周包¥29起</td><td>¥40/月起</td><td>开源免费</td><td>免费，赠 5000 Credits</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -850,7 +850,7 @@
         </div>
 
         <footer>
-            <p>📊 数据来源：各产品官网及公开文档</p>
+            <p>📊 数据来源：各产品官网及公开文档，截至3月31日</p>
         </footer>
     </div>
 
